@@ -1,1 +1,1 @@
-module github.com/o3de/hugo-odie
+module github.com/SunniyStudio/hugo-odie
