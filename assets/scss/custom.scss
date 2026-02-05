@@ -6,11 +6,13 @@
 
 @import "imports";
 
-@import url("#{h.$font_awesome_url}");
+// 本地化 Font Awesome，不再从远程 CDN 加载
+// @import url("#{h.$font_awesome_url}");
 
-@import url("#{h.$fonts_url}");
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400500700800900&display=swap');
+// 本地化 Google Fonts，不再从远程 CDN 加载
+// 字体通过 /css/fonts.css 本地加载
+// @import url("#{h.$fonts_url}");
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400500700800900&display=swap');
 
 $font-family-headers: "Open Sans";
 $font-family-Poppins: "Poppins", sans-serif;

@@ -3,22 +3,27 @@
 {{- $sass         := "scss/custom.scss" }}
 {{- $cssOutput    := "css/style.css" }}
 
+{{/* 本地化字体和图标，不再从远程 CDN 加载 */}}
 {{- $fontAwesomeVersion := site.Params.font_awesome_version }}
 {{- $fonts := site.Params.fonts }}
 {{ $scratch := collections.NewScratch }}
 
+{{/* 注释掉远程 Font Awesome URL，使用本地版本 */}}
 {{ with $fontAwesomeVersion }}
-  {{ $fontAwesomeUrl := printf "https://use.fontawesome.com/releases/v%s/css/all.css" . }}
-  {{ $scratch.Set "font_awesome_url" $fontAwesomeUrl }}
+  {{/* 不再使用远程 URL */}}
+  {{ $scratch.Set "font_awesome_url" "" }}
 {{ end }}
 
+{{/* 注释掉远程 Google Fonts URL，使用本地版本 */}}
 {{ if $fonts }}
-  {{ $fontSlice := (slice) }}
-  {{ range $fonts }}
-    {{ $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
-  {{ end }}
-  {{ $scratch.Set "fonts_url" (printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|")) }}
+  {{/* 不再使用远程 URL */}}
+  {{ $scratch.Set "fonts_url" "" }}
 {{ end }}
+
+{{/* 引入本地 Font Awesome CSS */}}
+<link rel="stylesheet" href="/fontawesome/css/all.min.css">
+{{/* 引入本地字体 CSS (Poppins, Open Sans) */}}
+<link rel="stylesheet" href="/css/fonts.css">
 
 
 {{- $v := dict 
